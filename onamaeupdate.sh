@@ -15,5 +15,5 @@ IP2=`dig @01.dnsv.jp 【更新するホスト名】.【更新するドメイン�
 #
 if [ $IP1 != $IP2  ]
 then
-  ./onamae.exp $IPADDR
+  ./onamae.exp $IP1 【更新するホスト名】【更新するドメイン名】
 fi
