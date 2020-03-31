@@ -1,5 +1,7 @@
 #!/usr/bin/expect
 
+set IPADDR [lindex $argv 0]
+
 spawn env LANG=C openssl s_client -connect ddnsclient.onamae.com:65010 -quiet
 
 send "LOGIN\n"
@@ -11,7 +13,7 @@ expect "000 COMMAND SUCCESSFUL" {
    send "MODIP\n"
    send "HOSTNAME:【更新するホスト名】\n"
    send "DOMNAME:【更新するドメイン名】\n"
-   send "IPV4:【更新されたIPアドレス】\n"
+   send "IPV4: $IPADDR \n"
    send ".\n"
    expect "000 COMMAND SUCCESSFUL" {
       send "LOGOUT\n"
