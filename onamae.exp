@@ -1,18 +1,21 @@
 #!/usr/bin/expect
 
 set IPADDR [lindex $argv 0]
+set HOSTNAME [lindex $argv 1]
+set DOMNAME [lindex $argv 2]
+
 
 spawn env LANG=C openssl s_client -connect ddnsclient.onamae.com:65010 -quiet
 
 send "LOGIN\n"
-send "USERID:お名前.comのユーザ名\n"
-send "PASSWORD:お名前.comのパスワード\n"
+send "USERID:【お名前.comのユーザ名】\n"
+send "PASSWORD:【お名前.comのパスワード】\n"
 send ".\n"
 
 expect "000 COMMAND SUCCESSFUL" {
    send "MODIP\n"
-   send "HOSTNAME:【更新するホスト名】\n"
-   send "DOMNAME:【更新するドメイン名】\n"
+   send "HOSTNAME: $HOSTNAME \n"
+   send "DOMNAME: $DOMNAME \n"
    send "IPV4: $IPADDR \n"
    send ".\n"
    expect "000 COMMAND SUCCESSFUL" {
