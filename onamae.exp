@@ -1,0 +1,22 @@
+#!/usr/bin/expect
+
+spawn env LANG=C openssl s_client -connect ddnsclient.onamae.com:65010 -quiet
+
+send "LOGIN\n"
+send "USERID:お名前.comのユーザ名\n"
+send "PASSWORD:お名前.comのパスワード\n"
+send ".\n"
+
+expect "000 COMMAND SUCCESSFUL" {
+   send "MODIP\n"
+   send "HOSTNAME:【更新するホスト名】\n"
+   send "DOMNAME:【更新するドメイン名】\n"
+   send "IPV4:【更新されたIPアドレス】\n"
+   send ".\n"
+   expect "000 COMMAND SUCCESSFUL" {
+      send "LOGOUT\n"
+      send ".\n"
+      exit 0
+   }
+   exit 0
+}
