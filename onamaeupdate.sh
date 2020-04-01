@@ -22,5 +22,5 @@ IP2=`dig @01.dnsv.jp $HOSTNAME.$DOMNAME +short`
 #
 if [ $IP1 != $IP2  ]
 then
-  ./onamae.exp $IP1 $HOSTNAME $DOMNAME $UNAME $PASSWD
+  expect ./onamae.exp $IP1 $HOSTNAME $DOMNAME $UNAME $PASSWD
 fi
