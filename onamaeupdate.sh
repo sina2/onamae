@@ -2,10 +2,10 @@
 #
 # 0.config
 #
-HOSTNAME=""
-DOMNAME=""
-UNAME=""
-PASSWD=""
+HOSTNAME="【更新するホスト名】"
+DOMNAME="【更新するドメイン名】"
+UNAME="【お名前.comのユーザ名】"
+PASSWD="【お名前.comのパスワード】"
 
 #
 # 1.get external IP for IP change
