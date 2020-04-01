@@ -1,4 +1,11 @@
 #!/bin/sh
+#
+# 0.config
+#
+HOSTNAME=""
+DOMNAME=""
+UNAME=""
+PASSWD=""
 
 #
 # 1.get external IP for IP change
@@ -7,7 +14,7 @@
 IP1=` curl -s https://ugtop.com/ | grep IP |tr "<" " "  | awk '{ print $3 }' `
 #echo $IP1
 
-IP2=`dig @01.dnsv.jp 【更新するホスト名】.【更新するドメイン名】+short`
+IP2=`dig @01.dnsv.jp $HOSTNAME.$DOMNAME +short`
 #echo $IP2
 
 #
@@ -15,5 +22,5 @@ IP2=`dig @01.dnsv.jp 【更新するホスト名】.【更新するドメイン�
 #
 if [ $IP1 != $IP2  ]
 then
-  ./onamae.exp $IP1 【更新するホスト名】【更新するドメイン名】
+  ./onamae.exp $IP1 $HOSTNAME $DOMNAME $UNAME $PASSWD
 fi
