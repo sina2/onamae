@@ -3,13 +3,15 @@
 set IPADDR [lindex $argv 0]
 set HOSTNAME [lindex $argv 1]
 set DOMNAME [lindex $argv 2]
+set UNAME [lindex $argv 3]
+set PASSWD [lindex $argv 4]
 
 
 spawn env LANG=C openssl s_client -connect ddnsclient.onamae.com:65010 -quiet
 
 send "LOGIN\n"
-send "USERID:【お名前.comのユーザ名】\n"
-send "PASSWORD:【お名前.comのパスワード】\n"
+send "USERID:$UNAME\n"
+send "PASSWORD:$PASSWD\n"
 send ".\n"
 
 expect "000 COMMAND SUCCESSFUL" {
