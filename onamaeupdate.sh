@@ -1,4 +1,6 @@
 #!/bin/sh
+{
+
 #
 # 0.config
 #
@@ -29,3 +31,6 @@ then
 else
   echo "    OK "
 fi
+
+exit
+}
