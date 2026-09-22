@@ -16,7 +16,7 @@ PASSWD="【お名前.comのパスワード】"
 #
 
 echo -n `date`
-IP1=` curl -s https://ugtop.com/ | grep IP |tr "<" " "  | awk '{ print $3 }' `
+IP1=` curl -s https://ugtop.com/ | grep IP |tr "<" " "  |tr ">" " "  |awk '{ print $5 }' `
 echo -n "    $IP1"
 IP2=`dig @01.dnsv.jp $HOSTNAME.$DOMNAME +short`
 echo -n "    $IP2"
